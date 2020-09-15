@@ -207,7 +207,7 @@ private static void writeByte(int x) {
 
 编码的读入与输出部分非常类似，同样是因为文件的所有操作都是字节为单位的，故只能将数据一个字节一个字节地读入。同样在输入工具类`BinaryInputUtil.java`定义一个缓存`buffer`，缓存每一次读入的 **一个字节** ，接着根据需要的具体数据类型进行比特的转换。
 
-<img src="https://gitee.com/bankarian/picStorage/raw/master/20200823152956.png" style="zoom:50%;" />
+<div align=center><img src="https://gitee.com/bankarian/picStorage/raw/master/20200823152956.png" width="30%" height="30%"/></div>
 
 ```java
 // 从buffer中读入一个bit（用boolean表示）
