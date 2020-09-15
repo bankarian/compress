@@ -15,7 +15,7 @@
 
 # 1. 整体架构
 
-<img src="https://gitee.com/bankarian/picStorage/raw/master/20200823155604.png" height="50%" width="50%" />
+<div align=center><img src="https://gitee.com/bankarian/picStorage/raw/master/20200823155604.png" height="30%" width="30%" /></div>
 
 # 2. 使用方法
 
