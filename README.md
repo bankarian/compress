@@ -1,151 +1,162 @@
-[TOC]
+<!-- GFM-TOC -->
+* [1. ÕûÌå¼Ü¹¹](#1-ÕûÌå¼Ü¹¹)
+* [2. Ê¹ÓÃ·½·¨](#2-Ê¹ÓÃ·½·¨)
+* [3. ÏîÄ¿ÊáÀí](#3-ÏîÄ¿ÊáÀí)
+    * [1. HuffmanÑ¹Ëõ](#1-huffmanÑ¹Ëõ)
+        * [Ñ¹Ëõ](#Ñ¹Ëõ)
+        * [½âÑ¹Ëõ](#½âÑ¹Ëõ)
+    * [2. ÎÄ¼þIO¹¤¾ßÀà](#2-ÎÄ¼þio¹¤¾ßÀà)
+        * [±àÂëÊä³ö](#±àÂëÊä³ö)
+        * [±àÂë¶ÁÈë](#±àÂë¶ÁÈë)
+<!-- GFM-TOC -->
 
 
 
-# 1. æ•´ä½“æž¶æž„
+
+# 1. ÕûÌå¼Ü¹¹
 
 <img src="https://gitee.com/bankarian/picStorage/raw/master/20200823155604.png" style="zoom:50%;" />
 
-# 2. ä½¿ç”¨æ–¹æ³•
+# 2. Ê¹ÓÃ·½·¨
 
-ç¨‹åºå…¥å£ä½äºŽ`client/`ä¸‹çš„`ZipUI.java`ã€‚
+³ÌÐòÈë¿ÚÎ»ÓÚ`client/`ÏÂµÄ`ZipUI.java`¡£
 
 
 
-# 3. é¡¹ç›®æ¢³ç†
+# 3. ÏîÄ¿ÊáÀí
 
-## 1. HuffmanåŽ‹ç¼©
+## 1. HuffmanÑ¹Ëõ
 
 > `HuffmanZip.java`
 
-### åŽ‹ç¼©
+### Ñ¹Ëõ
 
-ä¸€ä¸ªæ–‡æœ¬å°±æ˜¯256ä¸ªå­—ç¬¦çš„ç»„åˆï¼Œè¿™ä¹‹ä¸­å¿…ç„¶æœ‰éƒ¨åˆ†å­—ç¬¦å‡ºçŽ°çš„é¢‘çŽ‡æ›´é«˜ï¼Œä¸€éƒ¨åˆ†å‡ºçŽ°çš„é¢‘çŽ‡æ›´ä½Žã€‚å¯¹äºŽä¸å®šé•¿çš„ç¼–ç ï¼Œä¸€ç§åŽ‹ç¼©çš„æ€è·¯å°±æ˜¯å‡ºçŽ°**é¢‘çŽ‡é«˜çš„å­—ç¬¦ç¼–ç å°½é‡çŸ­ï¼Œåä¹‹ç¼–ç å¯ä»¥é•¿ä¸€äº›**ã€‚ç®€è€Œè¨€ä¹‹ï¼š**éžå‡åŒ€åœ°æ›´åŠ åˆç†åœ°åˆ†é…ç©ºé—´**ã€‚
+Ò»¸öÎÄ±¾¾ÍÊÇ256¸ö×Ö·ûµÄ×éºÏ£¬ÕâÖ®ÖÐ±ØÈ»ÓÐ²¿·Ö×Ö·û³öÏÖµÄÆµÂÊ¸ü¸ß£¬Ò»²¿·Ö³öÏÖµÄÆµÂÊ¸üµÍ¡£¶ÔÓÚ²»¶¨³¤µÄ±àÂë£¬Ò»ÖÖÑ¹ËõµÄË¼Â·¾ÍÊÇ³öÏÖ **ÆµÂÊ¸ßµÄ×Ö·û±àÂë¾¡Á¿¶Ì£¬·´Ö®±àÂë¿ÉÒÔ³¤Ò»Ð©** ¡£¼ò¶øÑÔÖ®£º**·Ç¾ùÔÈµØ¸ü¼ÓºÏÀíµØ·ÖÅä¿Õ¼ä**¡£
 
-å¯¹åº”åˆ°æ ‘ä¸Šä¸ºé¢‘çŽ‡é«˜çš„å­—ç¬¦æ›´é è¿‘æ ¹ï¼Œé¢‘çŽ‡ä½Žçš„å­—ç¬¦æ›´è¿œç¦»æ ¹ã€‚
+¶ÔÓ¦µ½Ê÷ÉÏÎªÆµÂÊ¸ßµÄ×Ö·û¸ü¿¿½ü¸ù£¬ÆµÂÊµÍµÄ×Ö·û¸üÔ¶Àë¸ù¡£
 
-#### å“ˆå¤«æ›¼æ ‘çš„æž„å»º
+#### ¹þ·òÂüÊ÷µÄ¹¹½¨
 
-å“ˆå¤«æ›¼æ ‘é‡‡ç”¨ä¸€ç§**è´ªå¿ƒ**çš„æ€æƒ³ï¼Œ**è‡ªåº•å‘ä¸Šæž„å»º**ã€‚æ ‘ä¸Šçš„æ¯ä¸€ä¸ªç»“ç‚¹æœ‰ä¸€ä¸ª`é¢‘çŽ‡`å±žæ€§ï¼Œç”¨äºŽæ¯”è¾ƒï¼›ä»…åœ¨å¶å­ç»“ç‚¹å­˜å‚¨å­—ç¬¦ã€‚å‡è®¾å½“å‰æ–‡æœ¬çš„æ‰€æœ‰å­—ç¬¦çš„é›†åˆä¸ºSï¼Œé‚£ä¹ˆæž„å»ºçš„è¿‡ç¨‹å¦‚ä¸‹ï¼š
+¹þ·òÂüÊ÷²ÉÓÃÒ»ÖÖ **Ì°ÐÄ** µÄË¼Ïë£¬**×Ôµ×ÏòÉÏ¹¹½¨**¡£Ê÷ÉÏµÄÃ¿Ò»¸ö½áµãÓÐÒ»¸ö`ÆµÂÊ`ÊôÐÔ£¬ÓÃÓÚ±È½Ï£»½öÔÚÒ¶×Ó½áµã´æ´¢×Ö·û¡£¼ÙÉèµ±Ç°ÎÄ±¾µÄËùÓÐ×Ö·ûµÄ¼¯ºÏÎªS£¬ÄÇÃ´¹¹½¨µÄ¹ý³ÌÈçÏÂ£º
 
-- æ¯ä¸€æ¬¡ä»ŽSä¸­é€‰å‡ºä¸¤ä¸ªé¢‘çŽ‡æœ€ä½Žçš„å­—ç¬¦ï¼Œåˆ†åˆ«åˆ›å»ºæˆä¸¤ä¸ªæ ‘ä¸Šç»“ç‚¹ï¼ŒæŽ¥ç€å°†è¿™ä¸¤ä¸ªå­—ç¬¦çš„`é¢‘çŽ‡`ç›¸åŠ è¡ç”Ÿå‡ºä¸€ä¸ªçˆ¶ç»“ç‚¹ï¼Œçˆ¶ç»“ç‚¹å†ä½œä¸ºä¸€ä¸ªå­—ç¬¦æ”¾å›žé›†åˆSä¸­ã€‚
-- é‡å¤ä»¥ä¸Šæ“ä½œï¼Œç›´è‡³Sé›†åˆä¸­åªæœ‰ä¸€ä¸ªç»“ç‚¹ã€‚è¿™ä¸ªç»“ç‚¹å°±æ˜¯**æ ¹**ï¼Œä¿å­˜äº†æ‰€æœ‰å­—ç¬¦å‡ºçŽ°é¢‘çŽ‡çš„æ€»å’Œã€‚
+- Ã¿Ò»´Î´ÓSÖÐÑ¡³öÁ½¸öÆµÂÊ×îµÍµÄ×Ö·û£¬·Ö±ð´´½¨³ÉÁ½¸öÊ÷ÉÏ½áµã£¬½Ó×Å½«ÕâÁ½¸ö×Ö·ûµÄ`ÆµÂÊ`Ïà¼ÓÑÜÉú³öÒ»¸ö¸¸½áµã£¬¸¸½áµãÔÙ×÷ÎªÒ»¸ö×Ö·û·Å»Ø¼¯ºÏSÖÐ¡£
+- ÖØ¸´ÒÔÉÏ²Ù×÷£¬Ö±ÖÁS¼¯ºÏÖÐÖ»ÓÐÒ»¸ö½áµã¡£Õâ¸ö½áµã¾ÍÊÇ **¸ù** £¬±£´æÁËËùÓÐ×Ö·û³öÏÖÆµÂÊµÄ×ÜºÍ¡£
 
-å¯ä»¥å‘çŽ°å“ˆå¤«æ›¼çš„æž„å»ºæ˜¯ä¸€ä¸ªé€æ­¥**åˆäºŒä¸ºä¸€**çš„è¿‡ç¨‹ï¼Œæ‰€ä»¥æ¯ä¸€ä¸ªç»“ç‚¹è¦ä¹ˆæ²¡æœ‰å­ç»“ç‚¹ã€è¦ä¹ˆæœ‰ä¸¤ä¸ªå­ç»“ç‚¹ï¼Œ**æ•…å“ˆå¤«æ›¼æ ‘æ˜¯ä¸€æ£µæ»¡äºŒå‰æ ‘**ï¼›åŒæ—¶ç”±äºŽæ¯ä¸€æ¬¡éƒ½æ˜¯å–å‡ºé¢‘çŽ‡æœ€å°çš„ä¸¤ä¸ªç»“ç‚¹ï¼Œ**è‡ªåº•å‘ä¸Š**ï¼Œæ•…é¢‘çŽ‡è¶Šå°çš„ç»“ç‚¹ä¼šåœ¨è¶Šä¸‹è¾¹ï¼Œè¿™æ ·å°±èƒ½å¤Ÿå®žçŽ°é¢‘çŽ‡å°ç¼–ç é•¿ã€é¢‘çŽ‡é«˜ç¼–ç çŸ­çš„ç›®çš„ã€‚
+¿ÉÒÔ·¢ÏÖ¹þ·òÂüµÄ¹¹½¨ÊÇÒ»¸öÖð²½ **ºÏ¶þÎªÒ»** µÄ¹ý³Ì£¬ËùÒÔÃ¿Ò»¸ö½áµãÒªÃ´Ã»ÓÐ×Ó½áµã¡¢ÒªÃ´ÓÐÁ½¸ö×Ó½áµã£¬**¹Ê¹þ·òÂüÊ÷ÊÇÒ»¿ÃÂú¶þ²æÊ÷**£»Í¬Ê±ÓÉÓÚÃ¿Ò»´Î¶¼ÊÇÈ¡³öÆµÂÊ×îÐ¡µÄÁ½¸ö½áµã£¬**×Ôµ×ÏòÉÏ**£¬¹ÊÆµÂÊÔ½Ð¡µÄ½áµã»áÔÚÔ½ÏÂ±ß£¬ÕâÑù¾ÍÄÜ¹»ÊµÏÖÆµÂÊÐ¡±àÂë³¤¡¢ÆµÂÊ¸ß±àÂë¶ÌµÄÄ¿µÄ¡£
 
-#### ç¼–ç 
+#### ±àÂë
 
-æž„å»ºå®ŒHuffmanæ ‘ä¹‹åŽï¼Œç¼–ç çš„èŽ·å–å°±å®¹æ˜“å¤šäº†ï¼Œåªéœ€éåŽ†æ•´ä¸ªäºŒå‰æ ‘ï¼Œä¸€è·¯ä¸Šå·¦0å³1ï¼Œåˆ°è¾¾å¶å­ç»“ç‚¹æ—¶æž„æˆçš„01ä¸²å°±æ˜¯è¯¥å¶å­ç»“ç‚¹å­—ç¬¦çš„ç¼–ç ã€‚
+¹¹½¨ÍêHuffmanÊ÷Ö®ºó£¬±àÂëµÄ»ñÈ¡¾ÍÈÝÒ×¶àÁË£¬Ö»Ðè±éÀúÕû¸ö¶þ²æÊ÷£¬Ò»Â·ÉÏ×ó0ÓÒ1£¬µ½´ïÒ¶×Ó½áµãÊ±¹¹³ÉµÄ01´®¾ÍÊÇ¸ÃÒ¶×Ó½áµã×Ö·ûµÄ±àÂë¡£
 
-#### æ•°æ®ä¼ è¾“
+#### Êý¾Ý´«Êä
 
-æœ‰äº†å“ˆå¤«æ›¼ç¼–ç è¡¨ä¹‹åŽï¼ŒåŽŸå…ˆçš„æ–‡ä»¶å¯ä»¥é€šè¿‡ç¼–ç è¡¨ä¸€ä¸€è½¬æ¢æˆå“ˆå¤«æ›¼ç¼–ç åŽä¼ è¾“ã€‚ä½†æ˜¯å…‰ä¼ ç¼–ç å‡ºåŽ»æ˜¯ä¸å¤Ÿçš„ï¼Œåˆ«äººå¯¹ç€ä½ è½¬æ¢åŽä¸€å¤§ä¸²0101åªèƒ½ä¸€è„¸è’™åœˆï¼Œæ‰€ä»¥è¿˜éœ€è¦å°†**è§£ç çš„æ–¹æ³•**ä¼ å‡ºåŽ»ï¼ˆè¿™ä¹Ÿæ˜¯ä¸€ç§éš¾ä»¥é¿å…çš„ç©ºé—´å¼€é”€ï¼‰ï¼Œä¸¤ç§æ–¹å¼ï¼š
+ÓÐÁË¹þ·òÂü±àÂë±íÖ®ºó£¬Ô­ÏÈµÄÎÄ¼þ¿ÉÒÔÍ¨¹ý±àÂë±íÒ»Ò»×ª»»³É¹þ·òÂü±àÂëºó´«Êä¡£µ«ÊÇ¹â´«±àÂë³öÈ¥ÊÇ²»¹»µÄ£¬±ðÈË¶Ô×ÅÄã×ª»»ºóÒ»´ó´®0101Ö»ÄÜÒ»Á³ÃÉÈ¦£¬ËùÒÔ»¹ÐèÒª½« **½âÂëµÄ·½·¨** ´«³öÈ¥£¨ÕâÒ²ÊÇÒ»ÖÖÄÑÒÔ±ÜÃâµÄ¿Õ¼ä¿ªÏú£©£¬Á½ÖÖ·½Ê½£º
 
-1. ä¼ ç¼–ç è¡¨ã€‚
+1. ´«±àÂë±í¡£
 
-   å¯¹äºŽè¿™ç§æ–¹å¼æˆ‘æ‰€èƒ½æƒ³åˆ°çš„æ˜¯ï¼ˆå­—ç¬¦asciiï¼Œç¼–ç ï¼‰è¿™æ ·ä¸€å¯¹å¯¹åœ°ä¼ ï¼Œè¿™æ ·çš„è¯ç”±äºŽç¼–ç æ˜¯ä¸å®šé•¿çš„ï¼Œæ‰€ä»¥æ¯ä¸€å¯¹çš„ç•Œé™ä¸æ¸…æ™°ï¼Œå¯¹æ–¹å¹¶ä¸èƒ½è§£æžï¼›
+   ¶ÔÓÚÕâÖÖ·½Ê½ÎÒËùÄÜÏëµ½µÄÊÇ£¨×Ö·ûascii£¬±àÂë£©ÕâÑùÒ»¶Ô¶ÔµØ´«£¬ÕâÑùµÄ»°ÓÉÓÚ±àÂëÊÇ²»¶¨³¤µÄ£¬ËùÒÔÃ¿Ò»¶ÔµÄ½çÏÞ²»ÇåÎú£¬¶Ô·½²¢²»ÄÜ½âÎö£»
 
-   å½“ç„¶ä½ ä¹Ÿå¯ä»¥ï¼ˆå­—ç¬¦asciiï¼Œé¢‘çŽ‡ï¼‰è¿™æ ·ä¼ ï¼Œä½†æ˜¯è¿™æ ·ä¼ é¢‘çŽ‡è‡³å°‘éœ€è¦ä¸€ä¸ª`int`ç±»åž‹çš„å¤§å°æ¥å­˜ï¼Œç©ºé—´æ¶ˆè€—æœ‰äº›å¤§ã€‚å¹¶ä¸”**é¢‘çŽ‡çš„å…·ä½“å€¼å¹¶ä¸æ˜¯æˆ‘ä»¬æ‰€å…³å¿ƒçš„ï¼Œæˆ‘ä»¬å…³å¿ƒçš„æ˜¯é¢‘çŽ‡çš„å¤§å°å…³ç³»**ã€‚æ‰€ä»¥æˆ‘æ›´è¶‹å‘äºŽç¬¬äºŒç§ä¼ è¾“æ–¹å¼ã€‚
+   µ±È»ÄãÒ²¿ÉÒÔ£¨×Ö·ûascii£¬ÆµÂÊ£©ÕâÑù´«£¬µ«ÊÇÕâÑù´«ÆµÂÊÖÁÉÙÐèÒªÒ»¸ö`int`ÀàÐÍµÄ´óÐ¡À´´æ£¬¿Õ¼äÏûºÄÓÐÐ©´ó¡£²¢ÇÒ **ÆµÂÊµÄ¾ßÌåÖµ²¢²»ÊÇÎÒÃÇËù¹ØÐÄµÄ£¬ÎÒÃÇ¹ØÐÄµÄÊÇÆµÂÊµÄ´óÐ¡¹ØÏµ** ¡£ËùÒÔÎÒ¸üÇ÷ÏòÓÚµÚ¶þÖÖ´«Êä·½Ê½¡£
 
-2. ä¼ å“ˆå¤«æ›¼æ ‘ã€‚
+2. ´«¹þ·òÂüÊ÷¡£
 
-   æ ‘ä¸æ˜¯ä¸€ç§çº¿æ€§çš„ç»“æž„ï¼Œæˆ‘ä»¬éœ€è¦æŠŠå…¶è½¬æ¢æˆçº¿æ€§çš„ç»“æž„æ‰èƒ½å¤Ÿç”¨01ä¸²ä¼ è¾“å‡ºåŽ»ã€‚å°†**æ ‘ä»¥çº¿æ€§å½¢å¼è¡¨ç¤º**å°±æ˜¯**éåŽ†**äº†ï¼Œæ‰€ä»¥ä¼ è¾“çš„æ˜¯**å“ˆå¤«æ›¼æ ‘éåŽ†çš„åºåˆ—**ã€‚
+   Ê÷²»ÊÇÒ»ÖÖÏßÐÔµÄ½á¹¹£¬ÎÒÃÇÐèÒª°ÑÆä×ª»»³ÉÏßÐÔµÄ½á¹¹²ÅÄÜ¹»ÓÃ01´®´«Êä³öÈ¥¡£½« **Ê÷ÒÔÏßÐÔÐÎÊ½±íÊ¾** ¾ÍÊÇ**±éÀú**ÁË£¬ËùÒÔ´«ÊäµÄÊÇ**¹þ·òÂüÊ÷±éÀúµÄÐòÁÐ**¡£
 
-   å‡è®¾è§„å®šå¥½ä¼ è¾“å‰åºéåŽ†åºåˆ—ï¼Œ**ä»¥0è¡¨ç¤ºåˆ†æ”¯ç»“ç‚¹ï¼Œä»¥1è¡¨ç¤ºå¶å­ç»“ç‚¹**ï¼Œä¸€æ—¦é‡åˆ°å¶å­ç»“ç‚¹å°±è¡¥ä¸Šå¶å­ç»“ç‚¹çš„å­—ç¬¦ä¿¡æ¯ï¼ˆ8bit/1byteï¼‰ã€‚è¿™æ ·ä¹‹åŽåœ¨è§£ç çš„æ—¶å€™ï¼Œåªéœ€è¦æŒ‰ç…§å‰åºéåŽ†çš„é€»è¾‘æ¥åˆ†æž01ä¸²ï¼šä¸€æ—¦é‡åˆ°1ï¼Œåˆ™åŽè¾¹8bitè¡¨ç¤ºçš„æ˜¯è¯¥å¶å­ç»“ç‚¹å¤„çš„å­—ç¬¦ã€‚
+   ¼ÙÉè¹æ¶¨ºÃ´«ÊäÇ°Ðò±éÀúÐòÁÐ£¬ **ÒÔ0±íÊ¾·ÖÖ§½áµã£¬ÒÔ1±íÊ¾Ò¶×Ó½áµã** £¬Ò»µ©Óöµ½Ò¶×Ó½áµã¾Í²¹ÉÏÒ¶×Ó½áµãµÄ×Ö·ûÐÅÏ¢£¨8bit/1byte£©¡£ÕâÑùÖ®ºóÔÚ½âÂëµÄÊ±ºò£¬Ö»ÐèÒª°´ÕÕÇ°Ðò±éÀúµÄÂß¼­À´·ÖÎö01´®£ºÒ»µ©Óöµ½1£¬Ôòºó±ß8bit±íÊ¾µÄÊÇ¸ÃÒ¶×Ó½áµã´¦µÄ×Ö·û¡£
 
 <img src="https://gitee.com/bankarian/picStorage/raw/master/20200723205522.png" style="zoom:50%;" />
 
-å®žçŽ°äº†å“ˆå¤«æ›¼å¯¹æ–‡ä»¶çš„é‡æ–°ç¼–ç åŽï¼Œå†åŠ ä¸Šå¯¹æ–‡ä»¶çš„è¯»å…¥è¾“å‡ºï¼Œå°±æ˜¯ä¸€ä¸ªç®€å•çš„åŽ‹ç¼©è½¯ä»¶äº†ã€‚å¤§ä½“çš„æ€è·¯å¦‚ä¸‹ï¼š
+ÊµÏÖÁË¹þ·òÂü¶ÔÎÄ¼þµÄÖØÐÂ±àÂëºó£¬ÔÙ¼ÓÉÏ¶ÔÎÄ¼þµÄ¶ÁÈëÊä³ö£¬¾ÍÊÇÒ»¸ö¼òµ¥µÄÑ¹ËõÈí¼þÁË¡£´óÌåµÄË¼Â·ÈçÏÂ£º
 
-å®šä¹‰åŽ‹ç¼©æ–‡æœ¬çš„æž„æˆï¼šå“ˆå¤«æ›¼æ ‘ 	ç¼–ç åŽçš„æ–‡æœ¬
+¶¨ÒåÑ¹ËõÎÄ±¾µÄ¹¹³É£º¹þ·òÂüÊ÷ 	±àÂëºóµÄÎÄ±¾
 
-- åŽ‹ç¼©ï¼š
-  - è¯»å…¥æ–‡ä»¶å†…å®¹
-  - ç»Ÿè®¡æ¯ä¸€ä¸ªå­—ç¬¦çš„å‡ºçŽ°é¢‘çŽ‡
-  - æ ¹æ®é¢‘çŽ‡æž„å»ºå“ˆå¤«æ›¼æ ‘ï¼ŒèŽ·å¾—å“ˆå¤«æ›¼ç¼–ç 
-  - å°†å“ˆå¤«æ›¼æ ‘å‰åºåºåˆ—å†™å…¥æ–°çš„ç›®æ ‡æ–‡ä»¶
-  - æ ¹æ®ç¼–ç è¡¨ï¼Œå°†æ–‡æœ¬é€ä¸ªå­—ç¬¦é‡æ–°ç¼–ç ï¼Œå†™å…¥ç›®æ ‡æ–‡ä»¶
-  - åŽ‹ç¼©å®Œæˆ
+- Ñ¹Ëõ£º
+  - ¶ÁÈëÎÄ¼þÄÚÈÝ
+  - Í³¼ÆÃ¿Ò»¸ö×Ö·ûµÄ³öÏÖÆµÂÊ
+  - ¸ù¾ÝÆµÂÊ¹¹½¨¹þ·òÂüÊ÷£¬»ñµÃ¹þ·òÂü±àÂë
+  - ½«¹þ·òÂüÊ÷Ç°ÐòÐòÁÐÐ´ÈëÐÂµÄÄ¿±êÎÄ¼þ
+  - ¸ù¾Ý±àÂë±í£¬½«ÎÄ±¾Öð¸ö×Ö·ûÖØÐÂ±àÂë£¬Ð´ÈëÄ¿±êÎÄ¼þ
+  - Ñ¹ËõÍê³É
 
-### è§£åŽ‹ç¼©
+### ½âÑ¹Ëõ
 
-è§£åŽ‹ç¼©éƒ¨åˆ†å°±éžå¸¸çš„å®¹æ˜“äº†ï¼Œå¤§ä½“æ€è·¯ï¼š
+½âÑ¹Ëõ²¿·Ö¾Í·Ç³£µÄÈÝÒ×ÁË£¬´óÌåË¼Â·£º
 
-- è§£åŽ‹ç¼©ï¼š
-  - è¯»å…¥å“ˆå¤«æ›¼æ ‘
-  - è¯»å…¥é‡æ–°ç¼–ç åŽçš„æ–‡æœ¬
-  - æ ¹æ®å“ˆå¤«æ›¼æ ‘è¿›è¡Œè§£ç ï¼Œè§£ç ç»“æžœè¾“å‡º
-  - è§£åŽ‹ç¼©å®Œæˆ
+- ½âÑ¹Ëõ£º
+  - ¶ÁÈë¹þ·òÂüÊ÷
+  - ¶ÁÈëÖØÐÂ±àÂëºóµÄÎÄ±¾
+  - ¸ù¾Ý¹þ·òÂüÊ÷½øÐÐ½âÂë£¬½âÂë½á¹ûÊä³ö
+  - ½âÑ¹ËõÍê³É
 
-#### è¯»å…¥å“ˆå¤«æ›¼æ ‘
+#### ¶ÁÈë¹þ·òÂüÊ÷
 
-ç”±äºŽå·²ç»è§„å®šå¥½ä¼ è¾“çš„æ˜¯æ ‘çš„**å‰åºéåŽ†åºåˆ—**ï¼Œæ‰€ä»¥åˆ©ç”¨**æ ¹å·¦å³**æ¨¡å¼çš„é€’å½’å¯ä»¥å¾ˆæ–¹ä¾¿è¯»å…¥æ•´ä¸ªå“ˆå¤«æ›¼æ ‘ï¼š
+ÓÉÓÚÒÑ¾­¹æ¶¨ºÃ´«ÊäµÄÊÇÊ÷µÄ **Ç°Ðò±éÀúÐòÁÐ** £¬ËùÒÔÀûÓÃ**¸ù×óÓÒ**Ä£Ê½µÄµÝ¹é¿ÉÒÔºÜ·½±ã¶ÁÈëÕû¸ö¹þ·òÂüÊ÷£º
 
 ```java
 private Node readTrie() {
   boolean isLeaf = BinaryInputUtil.readBoolean();
-  if (isLeaf)	// æ˜¯å¶å­ï¼Œåˆ™è¯»å…¥å¶å­å­˜å‚¨çš„å­—èŠ‚ä¿¡æ¯
+  if (isLeaf)	// ÊÇÒ¶×Ó£¬Ôò¶ÁÈëÒ¶×Ó´æ´¢µÄ×Ö½ÚÐÅÏ¢
     return new Node(BinaryInputUtil.readChar(), -1, null, null);
-  else	// ä¸æ˜¯å¶å­ï¼Œåˆ™ç»§ç»­å‰åºéåŽ†
+  else	// ²»ÊÇÒ¶×Ó£¬Ôò¼ÌÐøÇ°Ðò±éÀú
     return new Node('\0', -1, readTrie(), readTrie());
 }
 ```
 
-#### è§£ç 
+#### ½âÂë
 
-å¾—åˆ°äº†å“ˆå¤«æ›¼æ ‘ï¼Œè§£ç å°±éžå¸¸å®¹æ˜“äº†ï¼Œåªéœ€è¦ä¸æ–­ä»Žæ–‡ä»¶ä¸­è¯»å…¥01ä¸²ï¼ŒåŒæ—¶éåŽ†æ ‘ï¼ˆå·¦é›¶å³ä¸€ï¼‰ï¼Œä¸€æ—¦é‡åˆ°äº†å¶å­åˆ™è¯´æ˜Žè§£å‡ºäº†ä¸€ä¸ªå­—èŠ‚ã€‚
+µÃµ½ÁË¹þ·òÂüÊ÷£¬½âÂë¾Í·Ç³£ÈÝÒ×ÁË£¬Ö»ÐèÒª²»¶Ï´ÓÎÄ¼þÖÐ¶ÁÈë01´®£¬Í¬Ê±±éÀúÊ÷£¨×óÁãÓÒÒ»£©£¬Ò»µ©Óöµ½ÁËÒ¶×ÓÔòËµÃ÷½â³öÁËÒ»¸ö×Ö½Ú¡£
 
 ```java
 Node root = readTrie(), n;
 while (!BinaryInputUtil.isEmpty()) {
-  n = root;	// ä»Žæ ¹å¼€å§‹éšç€01çš„è¯»å…¥éåŽ†Huffmanæ ‘
+  n = root;	// ´Ó¸ù¿ªÊ¼Ëæ×Å01µÄ¶ÁÈë±éÀúHuffmanÊ÷
   while (!n.isLeaf()) {
     boolean bit = BinaryInputUtil.readBoolean();
     if (bit) n = n.right;
     else n = n.left;
   }
-  BinaryOutputUtil.write(n.ch, 8);	// é‡åˆ°å¶å­ç»“ç‚¹ï¼Œè§£ç å‡ºä¸€ä¸ªå­—èŠ‚
+  BinaryOutputUtil.write(n.ch, 8);	// Óöµ½Ò¶×Ó½áµã£¬½âÂë³öÒ»¸ö×Ö½Ú
 }
 ```
 
 
 
-## 2. æ–‡ä»¶IOå·¥å…·ç±»
+## 2. ÎÄ¼þIO¹¤¾ßÀà
 
 > `BinaryOutputUtil.java` `BinaryInputUtil.java`
 >
-> æ— è®ºæ˜¯è¯»/å†™æ–‡ä»¶ï¼Œæœ€å°æ“ä½œå•å…ƒéƒ½æ˜¯`Byte`ï¼Œæ‰€ä»¥æˆ‘ä»¬çš„æ•°æ®æ— è®ºæ˜¯å†™å…¥è¿˜æ˜¯ä¼ å‡ºæ–‡ä»¶éƒ½åº”è¯¥æ˜¯**ä¸€ä¸ªå­—èŠ‚ä¸€ä¸ªå­—èŠ‚**åœ°æ“ä½œã€‚
+> ÎÞÂÛÊÇ¶Á/Ð´ÎÄ¼þ£¬×îÐ¡²Ù×÷µ¥Ôª¶¼ÊÇ`Byte`£¬ËùÒÔÎÒÃÇµÄÊý¾ÝÎÞÂÛÊÇÐ´Èë»¹ÊÇ´«³öÎÄ¼þ¶¼Ó¦¸ÃÊÇ **Ò»¸ö×Ö½ÚÒ»¸ö×Ö½Ú** µØ²Ù×÷¡£
 
-### ç¼–ç è¾“å‡º
+### ±àÂëÊä³ö
 
-æˆ‘ä»¬çš„å“ˆå¤«æ›¼ç¼–ç æ˜¯**ä½çº§çš„ç¼–ç **ï¼ˆ`bit`ï¼‰ï¼Œæ‰€ä»¥ä¸èƒ½å¤Ÿä¸€ä¸ªä¸ªç¼–ç åœ°ç›´æŽ¥å†™å…¥æ–‡ä»¶ã€‚å¯ä»¥é€šè¿‡ä¸€ä¸ªä¸­é—´å±‚çš„ç¼“å­˜å˜é‡`buffer`ï¼Œåˆ©ç”¨ä½æ“ä½œæ¥ç¼“å­˜å½“å‰èŽ·å¾—çš„`bit`ï¼Œä¸€æ—¦å­˜å‚¨çš„`bit`æ€»æ•°è¾¾åˆ°äº†8ï¼Œ**å³æ°å¥½ç»„æˆäº†ä¸€ä¸ª`Byte`å†å°†å…¶å†™å…¥è¾“å‡ºæµæ–‡ä»¶**ã€‚
+ÎÒÃÇµÄ¹þ·òÂü±àÂëÊÇ **Î»¼¶µÄ±àÂë** £¨`bit`£©£¬ËùÒÔ²»ÄÜ¹»Ò»¸ö¸ö±àÂëµØÖ±½ÓÐ´ÈëÎÄ¼þ¡£¿ÉÒÔÍ¨¹ýÒ»¸öÖÐ¼ä²ãµÄ»º´æ±äÁ¿`buffer`£¬ÀûÓÃÎ»²Ù×÷À´»º´æµ±Ç°»ñµÃµÄ`bit`£¬Ò»µ©´æ´¢µÄ`bit`×ÜÊý´ïµ½ÁË8£¬**¼´Ç¡ºÃ×é³ÉÁËÒ»¸ö`Byte`ÔÙ½«ÆäÐ´ÈëÊä³öÁ÷ÎÄ¼þ**¡£
 
 ```java
 /**
-* å°†ç‰¹å®šçš„bitè¾“å‡ºåˆ°æ–‡ä»¶ï¼ˆé€»è¾‘ä¸Šï¼‰
+* ½«ÌØ¶¨µÄbitÊä³öµ½ÎÄ¼þ£¨Âß¼­ÉÏ£©
 */
 private static void writeBit(boolean bit) {
   if (!isInitialized) initialize();
 
-  // å°†bitå…ˆç¼“å­˜é“è¾“å‡ºç¼“å­˜
+  // ½«bitÏÈ»º´æµÀÊä³ö»º´æ
   buffer <<= 1;
   if (bit) buffer |= 1;	
 
-  // è¾¾åˆ°äº†8bitï¼Œæ‰çœŸæ­£å°†ç¼“å­˜çš„æ•°æ®å†™å‡º
+  // ´ïµ½ÁË8bit£¬²ÅÕæÕý½«»º´æµÄÊý¾ÝÐ´³ö
   n++;
   if (n == 8) clearBuffer();
 }
 
 /** 
-* å°†bufferä¸­çš„æ‰€æœ‰æ•°æ®å†™å‡ºï¼Œç”¨0è¡¥é½ä½Žä½
+* ½«bufferÖÐµÄËùÓÐÊý¾ÝÐ´³ö£¬ÓÃ0²¹ÆëµÍÎ»
 */
 private static void clearBuffer() {
   if (!isInitialized) initialize();
 
-  if (n == 0) return;	// ç¼“å­˜ä¸­æ²¡æœ‰æ•°æ®ï¼Œæ— éœ€å†™å‡º
-  if (n > 0) buffer <<= (8 - n);	// åŽ»æŽ‰å‰å¯¼é›¶
+  if (n == 0) return;	// »º´æÖÐÃ»ÓÐÊý¾Ý£¬ÎÞÐèÐ´³ö
+  if (n > 0) buffer <<= (8 - n);	// È¥µôÇ°µ¼Áã
   try {
-    out.write(buffer);	// outæ˜¯ä¸€ä¸ªç»‘å®šäº†æ–‡ä»¶çš„è¾“å‡ºæµï¼Œè¿™é‡ŒçœŸæ­£å°†ä¸€ä¸ªbyteè¾“å‡º
+    out.write(buffer);	// outÊÇÒ»¸ö°ó¶¨ÁËÎÄ¼þµÄÊä³öÁ÷£¬ÕâÀïÕæÕý½«Ò»¸öbyteÊä³ö
   } catch (IOException e) {
     e.printStackTrace();
   }
@@ -154,7 +165,7 @@ private static void clearBuffer() {
 }
 ```
 
-è¿™å°±æ˜¯ä¸€ä¸ª**é€»è¾‘ä¸Š**è¾“å‡ºä¸€ä¸ªæ¯”ç‰¹åˆ°æ–‡ä»¶çš„é€»è¾‘ï¼š**ç‰©ç†ä¸Šå¹¶æ²¡æœ‰ç«‹å³å†™å‡ºåŽ»ï¼Œè€Œæ˜¯å…ˆæš‚æ—¶å­˜åœ¨äº†ç¨‹åºçš„ç¼“å­˜å˜é‡ä¸­**ã€‚ç”±äºŽè®¡ç®—æœºä¸­æœ€å°çš„å•ä½å°±æ˜¯æ¯”ç‰¹ï¼Œæ‰€ä»¥æœ‰äº†æ¯”ç‰¹çš„è¾“å‡ºæ–¹å¼ï¼Œå…¶ä½™çš„æ‰€æœ‰æ•°æ®ç±»åž‹éƒ½å¯ä»¥è¾“å‡ºäº†ï¼Œä¾‹å¦‚è¾“å‡ºä¸€ä¸ªå­—èŠ‚ï¼š
+Õâ¾ÍÊÇÒ»¸ö **Âß¼­ÉÏ** Êä³öÒ»¸ö±ÈÌØµ½ÎÄ¼þµÄÂß¼­£º**ÎïÀíÉÏ²¢Ã»ÓÐÁ¢¼´Ð´³öÈ¥£¬¶øÊÇÏÈÔÝÊ±´æÔÚÁË³ÌÐòµÄ»º´æ±äÁ¿ÖÐ**¡£ÓÉÓÚ¼ÆËã»úÖÐ×îÐ¡µÄµ¥Î»¾ÍÊÇ±ÈÌØ£¬ËùÒÔÓÐÁË±ÈÌØµÄÊä³ö·½Ê½£¬ÆäÓàµÄËùÓÐÊý¾ÝÀàÐÍ¶¼¿ÉÒÔÊä³öÁË£¬ÀýÈçÊä³öÒ»¸ö×Ö½Ú£º
 
 ```java
 /**
@@ -165,7 +176,7 @@ private static void writeByte(int x) {
 
   assert x >= 0 && x < 256;
 
-  // è‹¥å­—èŠ‚æ°å¥½èƒ½å¤Ÿè¡¥é½ï¼Œç›´æŽ¥å†™å‡º
+  // Èô×Ö½ÚÇ¡ºÃÄÜ¹»²¹Æë£¬Ö±½ÓÐ´³ö
   if (n == 0) {
     try {
       out.write(x);
@@ -175,7 +186,7 @@ private static void writeByte(int x) {
     return;
   }
 
-  // å¦åˆ™ï¼Œä¸€ä¸ªä¸ªbitåœ°ç¼“å­˜åˆ°bufferä¸­å†è¾“å‡º
+  // ·ñÔò£¬Ò»¸ö¸öbitµØ»º´æµ½bufferÖÐÔÙÊä³ö
   for (int i = 0; i < 8; i++) {
     boolean bit = ((x >>> (8 - i - 1)) & 1) == 1;
     writeBit(bit);
@@ -183,23 +194,23 @@ private static void writeByte(int x) {
 }
 ```
 
-æˆ‘ä½¿ç”¨çš„è¾“å‡ºæµæ˜¯`BufferedOutputStream`ï¼Œåœ¨APIä¸­æåˆ°è¿‡ï¼šæ¯æ¬¡è°ƒç”¨`write`æ–¹æ³•å®žé™…ä¸Šæ˜¯**å°†æ•°æ®å†™åˆ°äº†è¿™ä¸ªæµçš„éšè—ç¼“å­˜ä¸­**ï¼Œå¹¶æ²¡æœ‰çœŸæ­£å†™å‡ºã€‚è¦å°†æ•°æ®çœŸæ­£å†™å‡ºï¼Œæœ‰ä¸¤ç§æƒ…å†µï¼š
+ÎÒÊ¹ÓÃµÄÊä³öÁ÷ÊÇ`BufferedOutputStream`£¬ÔÚAPIÖÐÌáµ½¹ý£ºÃ¿´Îµ÷ÓÃ`write`·½·¨Êµ¼ÊÉÏÊÇ **½«Êý¾ÝÐ´µ½ÁËÕâ¸öÁ÷µÄÒþ²Ø»º´æÖÐ** £¬²¢Ã»ÓÐÕæÕýÐ´³ö¡£Òª½«Êý¾ÝÕæÕýÐ´³ö£¬ÓÐÁ½ÖÖÇé¿ö£º
 
-1. åœ¨å­˜å‚¨çš„æ•°æ®é•¿åº¦è¶…è¿‡äº†æµç¼“å­˜é•¿åº¦ï¼Œè‡ªåŠ¨å°†æ•°æ®çœŸæ­£è¾“å‡ºåˆ°è¾“å‡ºæµï¼›
-2. æˆ–è€…è°ƒç”¨`flush`æ–¹æ³•ï¼Œå¼ºåˆ¶å°†æµç¼“å­˜ä¸­çš„æ•°æ®çœŸæ­£æ”¾åˆ°è¾“å‡ºæµã€‚
+1. ÔÚ´æ´¢µÄÊý¾Ý³¤¶È³¬¹ýÁËÁ÷»º´æ³¤¶È£¬×Ô¶¯½«Êý¾ÝÕæÕýÊä³öµ½Êä³öÁ÷£»
+2. »òÕßµ÷ÓÃ`flush`·½·¨£¬Ç¿ÖÆ½«Á÷»º´æÖÐµÄÊý¾ÝÕæÕý·Åµ½Êä³öÁ÷¡£
 
-æ•…åœ¨è¿™ç§ç‰¹æ€§ä¸‹ï¼Œæˆ‘çš„æ•´ä¸ªè¾“å‡ºç¼–ç çš„é€»è¾‘å°±æ˜¯ï¼šç¼–ç ä¸€ä¸ªæ¯”ç‰¹ä¸€ä¸ªæ¯”ç‰¹åœ°å­˜å…¥è‡ªå®šä¹‰IOå·¥å…·çš„`buffer`ä¸­ï¼Œ`buffer`ä¼šæ ¹æ®å½“å‰çš„ç¼“å­˜æƒ…å†µå°†æ•°æ®å­˜å…¥åˆ°`BufferedOutputStream`çš„æµç¼“å­˜ä¸­ï¼Œæœ€ç»ˆåˆ·å‡ºæµç¼“å­˜çš„æ•°æ®å®Œæˆç¼–ç è¾“å‡ºåˆ°æ–‡ä»¶ã€‚
+¹ÊÔÚÕâÖÖÌØÐÔÏÂ£¬ÎÒµÄÕû¸öÊä³ö±àÂëµÄÂß¼­¾ÍÊÇ£º±àÂëÒ»¸ö±ÈÌØÒ»¸ö±ÈÌØµØ´æÈë×Ô¶¨ÒåIO¹¤¾ßµÄ`buffer`ÖÐ£¬`buffer`»á¸ù¾Ýµ±Ç°µÄ»º´æÇé¿ö½«Êý¾Ý´æÈëµ½`BufferedOutputStream`µÄÁ÷»º´æÖÐ£¬×îÖÕË¢³öÁ÷»º´æµÄÊý¾ÝÍê³É±àÂëÊä³öµ½ÎÄ¼þ¡£
 
 <img src="https://gitee.com/bankarian/picStorage/raw/master/20200823151919.png" style="zoom:50%;" />
 
-### ç¼–ç è¯»å…¥
+### ±àÂë¶ÁÈë
 
-ç¼–ç çš„è¯»å…¥ä¸Žè¾“å‡ºéƒ¨åˆ†éžå¸¸ç±»ä¼¼ï¼ŒåŒæ ·æ˜¯å› ä¸ºæ–‡ä»¶çš„æ‰€æœ‰æ“ä½œéƒ½æ˜¯å­—èŠ‚ä¸ºå•ä½çš„ï¼Œæ•…åªèƒ½å°†æ•°æ®ä¸€ä¸ªå­—èŠ‚ä¸€ä¸ªå­—èŠ‚åœ°è¯»å…¥ã€‚åŒæ ·åœ¨è¾“å…¥å·¥å…·ç±»`BinaryInputUtil.java`å®šä¹‰ä¸€ä¸ªç¼“å­˜`buffer`ï¼Œç¼“å­˜æ¯ä¸€æ¬¡è¯»å…¥çš„**ä¸€ä¸ªå­—èŠ‚**ï¼ŒæŽ¥ç€æ ¹æ®éœ€è¦çš„å…·ä½“æ•°æ®ç±»åž‹è¿›è¡Œæ¯”ç‰¹çš„è½¬æ¢ã€‚
+±àÂëµÄ¶ÁÈëÓëÊä³ö²¿·Ö·Ç³£ÀàËÆ£¬Í¬ÑùÊÇÒòÎªÎÄ¼þµÄËùÓÐ²Ù×÷¶¼ÊÇ×Ö½ÚÎªµ¥Î»µÄ£¬¹ÊÖ»ÄÜ½«Êý¾ÝÒ»¸ö×Ö½ÚÒ»¸ö×Ö½ÚµØ¶ÁÈë¡£Í¬ÑùÔÚÊäÈë¹¤¾ßÀà`BinaryInputUtil.java`¶¨ÒåÒ»¸ö»º´æ`buffer`£¬»º´æÃ¿Ò»´Î¶ÁÈëµÄ **Ò»¸ö×Ö½Ú** £¬½Ó×Å¸ù¾ÝÐèÒªµÄ¾ßÌåÊý¾ÝÀàÐÍ½øÐÐ±ÈÌØµÄ×ª»»¡£
 
 <img src="https://gitee.com/bankarian/picStorage/raw/master/20200823152956.png" style="zoom:50%;" />
 
 ```java
-// ä»Žbufferä¸­è¯»å…¥ä¸€ä¸ªbitï¼ˆç”¨booleanè¡¨ç¤ºï¼‰
+// ´ÓbufferÖÐ¶ÁÈëÒ»¸öbit£¨ÓÃboolean±íÊ¾£©
 public static boolean readBoolean() {	
   if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
   n--;
@@ -208,7 +219,7 @@ public static boolean readBoolean() {
   return bit;
 }
 
-// ä»Žè¾“å…¥æµè¯»å…¥ä¸€ä¸ªå­—èŠ‚åˆ°buffer
+// ´ÓÊäÈëÁ÷¶ÁÈëÒ»¸ö×Ö½Úµ½buffer
 private static void fillBuffer() {
   try {
     buffer = in.read();
@@ -221,31 +232,31 @@ private static void fillBuffer() {
 }
 ```
 
-æœ‰äº†æ¯”ç‰¹çš„è¯»å…¥ï¼Œé€šè¿‡ä¸€å®šçš„ç»„åˆæ¥è¡¨ç¤ºæˆå…¶ä»–çš„å…·ä½“ç±»åž‹ï¼Œä¾‹å¦‚è¯»å…¥ä¸€ä¸ªå­—èŠ‚å°±æ˜¯è¿žç»­è¯»å…¥8ä¸ªæ¯”ç‰¹ã€‚
+ÓÐÁË±ÈÌØµÄ¶ÁÈë£¬Í¨¹ýÒ»¶¨µÄ×éºÏÀ´±íÊ¾³ÉÆäËûµÄ¾ßÌåÀàÐÍ£¬ÀýÈç¶ÁÈëÒ»¸ö×Ö½Ú¾ÍÊÇÁ¬Ðø¶ÁÈë8¸ö±ÈÌØ¡£
 
 ```java
 public static char readChar() {
   if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
 
-  // è‹¥ç¼“å­˜æ°å¥½å°±å­˜ç€8ä¸ªbitï¼Œç›´æŽ¥èŽ·å–å€¼å¹¶æ›´æ–°buffer
+  // Èô»º´æÇ¡ºÃ¾Í´æ×Å8¸öbit£¬Ö±½Ó»ñÈ¡Öµ²¢¸üÐÂbuffer
   if (n == 8) {
     int x = buffer;
     fillBuffer();
     return (char) (x & 0xff);
   }
 
-  // å¦åˆ™åªèƒ½ä¸€ä¸ªä¸ªbitåœ°ç»„åˆæˆä¸€ä¸ªå­—èŠ‚
+  // ·ñÔòÖ»ÄÜÒ»¸ö¸öbitµØ×éºÏ³ÉÒ»¸ö×Ö½Ú
   int x = buffer, oldN = n;
-  x <<= (8 - n);	// æŠŠå‰©ä½™çš„bitå…ˆè¯»å…¥
-  fillBuffer();		// é‡æ–°ä»Žè¾“å…¥æµä¸­èŽ·å–ä¸€ä¸ªå­—èŠ‚åˆ°buffer
+  x <<= (8 - n);	// °ÑÊ£ÓàµÄbitÏÈ¶ÁÈë
+  fillBuffer();		// ÖØÐÂ´ÓÊäÈëÁ÷ÖÐ»ñÈ¡Ò»¸ö×Ö½Úµ½buffer
   if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
-  n = oldN;	// ç»„åˆå®Œä¸€ä¸ªå­—èŠ‚åŽï¼Œå½“å‰bufferå‰©ä½™çš„bitä¸ªæ•°
+  n = oldN;	// ×éºÏÍêÒ»¸ö×Ö½Úºó£¬µ±Ç°bufferÊ£ÓàµÄbit¸öÊý
   x |= (buffer >>> n);
   return (char) (x & 0xff);
 }
 ```
 
-é‚£ä¹ˆè¯»å…¥ä¸€ä¸ª`int`æ•´æ•°å°±æ˜¯è¿žç»­è¯»å…¥4ä¸ªå­—èŠ‚ã€‚å…¶ä½™ç±»åž‹çš„æ•°æ®éƒ½å¤§åŒå°å¼‚ï¼Œå°±ä¸ä¸€ä¸€èµ˜è¿°äº†ã€‚
+ÄÇÃ´¶ÁÈëÒ»¸ö`int`ÕûÊý¾ÍÊÇÁ¬Ðø¶ÁÈë4¸ö×Ö½Ú¡£ÆäÓàÀàÐÍµÄÊý¾Ý¶¼´óÍ¬Ð¡Òì£¬¾Í²»Ò»Ò»×¸ÊöÁË¡£
 
 ```java
 public static int readInt() {
