@@ -20,6 +20,11 @@
 # 2. 使用方法
 
 程序入口位于`client/`下的`ZipUI.java`。
+```
+javac ZipUI.java
+java ZipUI
+```
+或者使用IDE运行
 
 
 
