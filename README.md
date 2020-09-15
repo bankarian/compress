@@ -64,7 +64,8 @@
 
    假设规定好传输前序遍历序列， **以0表示分支结点，以1表示叶子结点** ，一旦遇到叶子结点就补上叶子结点的字符信息（8bit/1byte）。这样之后在解码的时候，只需要按照前序遍历的逻辑来分析01串：一旦遇到1，则后边8bit表示的是该叶子结点处的字符。
 
-<img src="https://gitee.com/bankarian/picStorage/raw/master/20200723205522.png" style="zoom:50%;" />
+<div align=center><img src="https://gitee.com/bankarian/picStorage/raw/master/20200723205522.png" width="30%" height="30%" />
+</div>
 
 实现了哈夫曼对文件的重新编码后，再加上对文件的读入输出，就是一个简单的压缩软件了。大体的思路如下：
 
@@ -201,7 +202,8 @@ private static void writeByte(int x) {
 
 故在这种特性下，我的整个输出编码的逻辑就是：编码一个比特一个比特地存入自定义IO工具的`buffer`中，`buffer`会根据当前的缓存情况将数据存入到`BufferedOutputStream`的流缓存中，最终刷出流缓存的数据完成编码输出到文件。
 
-<img src="https://gitee.com/bankarian/picStorage/raw/master/20200823151919.png" style="zoom:50%;" />
+<div align=center><img src="https://gitee.com/bankarian/picStorage/raw/master/20200823151919.png" width="30%" height="30%"/>
+</div>
 
 ### 编码读入
 
