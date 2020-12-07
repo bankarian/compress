@@ -1,4 +1,4 @@
-package com.beney.huffman;
+package com.beney.zipImpl;
 
 
 
